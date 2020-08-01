@@ -1,12 +1,25 @@
----
-title: "TDI Project Proposal Excerpt 1"
-output: rmarkdown::github_document
----
-```{r, message = FALSE}
+TDI Project Proposal Excerpt 1
+================
+
+``` r
 library(tidyverse)
 ```
 
-```{r}
+    ## Warning: package 'tidyverse' was built under R version 3.5.2
+
+    ## Warning: package 'tibble' was built under R version 3.5.2
+
+    ## Warning: package 'tidyr' was built under R version 3.5.2
+
+    ## Warning: package 'purrr' was built under R version 3.5.2
+
+    ## Warning: package 'dplyr' was built under R version 3.5.2
+
+    ## Warning: package 'stringr' was built under R version 3.5.2
+
+    ## Warning: package 'forcats' was built under R version 3.5.2
+
+``` r
 # had to hand-download this data because download requires agreement to
 # Propublica's terms
 police <- read.csv("./CCRB-Complaint-Data_202007271729/allegations_202007271729.csv")
@@ -27,3 +40,4 @@ g <- ggplot(black_or_white_officers, aes(x = num_allegations, fill = mos_ethnici
 g
 ```
 
+![](asset1_files/figure-markdown_github/unnamed-chunk-2-1.png)

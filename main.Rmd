@@ -13,11 +13,14 @@ I will conduct two examples of statistical analysis that could be included in th
 ## Police Officer Misconduct by Race
 
 For example, we could compare the number of allegations against Black officers and the number against white officers. Of course, the proportion of Black officers to all officers is much smaller than that of white officers, so we plot the density of the number of allegations instead of the count.
+```{r, message = FALSE}
+library(tidyverse)
+library(factoextra)
+```
 
 ```{r}
 # had to hand-download this data because download requires agreement to
 # Propublica's terms
-library(tidyverse)
 police <- read.csv("./CCRB-Complaint-Data_202007271729/allegations_202007271729.csv")
 
 officers <- police %>% 
@@ -42,8 +45,6 @@ Black officers seem slightly less likely to have a large number of allegations a
 As another example, we can do cluster analysis on the officers. Are there distinct "types" of police officers that we can identify? For example, there may be officers who have high rates of allegations of verbal abuse, but are surprisingly nonviolent; or there may be officers who have higher rates of use of force than other officers with similar numbers of allegations. Let's do simple k-means clustering on officers based on number of allegations and proportions of types of allegations. 
 
 ```{r}
-library(factoextra)
-
 officer_types <- police %>%
         group_by(unique_mos_id, fado_type) %>%
         count() %>%
