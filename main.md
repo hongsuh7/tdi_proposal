@@ -98,6 +98,15 @@ officer_types$cluster = clusters
 cluster_totals <- officer_types %>% 
         group_by(cluster) %>%
         summarize(mean(total))
+cluster_totals
 ```
+
+    ## # A tibble: 4 x 2
+    ##   cluster `mean(total)`
+    ##     <int>         <dbl>
+    ## 1       1          9.18
+    ## 2       2          9.68
+    ## 3       3         13.6 
+    ## 4       4         10.1
 
 That didn't result in something very meaningful, but I did it out of pure interest. I think there are many hidden patterns to explore in this dataset.

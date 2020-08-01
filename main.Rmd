@@ -1,8 +1,6 @@
 ---
 title: 'TDI Project Proposal: NYPD Misconduct'
-output:
-  html_document:
-    df_print: paged
+output: rmarkdown::github_document
 ---
 
 ## Introduction
@@ -76,6 +74,7 @@ officer_types$cluster = clusters
 cluster_totals <- officer_types %>% 
         group_by(cluster) %>%
         summarize(mean(total))
+cluster_totals
 ```
 
 That didn't result in something very meaningful, but I did it out of pure interest. I think there are many hidden patterns to explore in this dataset.
