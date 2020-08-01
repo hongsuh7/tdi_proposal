@@ -21,7 +21,7 @@ library(factoextra)
 ```{r}
 # had to hand-download this data because download requires agreement to
 # Propublica's terms
-police <- read.csv("./CCRB-Complaint-Data_202007271729/allegations_202007271729.csv")
+police <- read.csv("../CCRB-Complaint-Data_202007271729/allegations_202007271729.csv")
 
 officers <- police %>% 
         group_by(unique_mos_id, mos_ethnicity) %>% 
@@ -45,6 +45,7 @@ Black officers seem slightly less likely to have a large number of allegations a
 As another example, we can do cluster analysis on the officers. Are there distinct "types" of police officers that we can identify? For example, there may be officers who have high rates of allegations of verbal abuse, but are surprisingly nonviolent; or there may be officers who have higher rates of use of force than other officers with similar numbers of allegations. Let's do simple k-means clustering on officers based on number of allegations and proportions of types of allegations. 
 
 ```{r}
+set.seed(7312020) # today's date!
 officer_types <- police %>%
         group_by(unique_mos_id, fado_type) %>%
         count() %>%
@@ -64,9 +65,11 @@ officer_types <- police %>%
 df <- officer_types %>% ungroup() %>% select(-unique_mos_id) %>% select(-total)
 k <- kmeans(df, centers = 4, nstart = 20)
 
+k$centers
+
 fviz_cluster(k, data = df, geom = "point", main = "Clusters of Types of Police Officers")
 ```
-We can roughly see different types of officers. Cluster 4 seems to consist of officers who use a lot of force. Cluster 3 seems to consist of officers who commit abuse of authority but are not generally violent. And so on. Let's observe which cluster is most likely to have many allegations.
+We can roughly see different types of officers. Cluster 3 seems to consist of officers who use a lot of force. Cluster 4 seems to consist of officers who commit abuse of authority but are not generally violent. And so on. Let's observe which cluster is most likely to have many allegations.
 
 ```{r}
 clusters <- k$cluster

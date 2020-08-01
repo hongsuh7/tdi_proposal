@@ -42,7 +42,7 @@ library(factoextra)
 ``` r
 # had to hand-download this data because download requires agreement to
 # Propublica's terms
-police <- read.csv("./CCRB-Complaint-Data_202007271729/allegations_202007271729.csv")
+police <- read.csv("../CCRB-Complaint-Data_202007271729/allegations_202007271729.csv")
 
 officers <- police %>% 
         group_by(unique_mos_id, mos_ethnicity) %>% 
@@ -68,6 +68,7 @@ Types of Police Officers
 As another example, we can do cluster analysis on the officers. Are there distinct "types" of police officers that we can identify? For example, there may be officers who have high rates of allegations of verbal abuse, but are surprisingly nonviolent; or there may be officers who have higher rates of use of force than other officers with similar numbers of allegations. Let's do simple k-means clustering on officers based on number of allegations and proportions of types of allegations.
 
 ``` r
+set.seed(7312020) # today's date!
 officer_types <- police %>%
         group_by(unique_mos_id, fado_type) %>%
         count() %>%
@@ -87,10 +88,20 @@ officer_types <- police %>%
 df <- officer_types %>% ungroup() %>% select(-unique_mos_id) %>% select(-total)
 k <- kmeans(df, centers = 4, nstart = 20)
 
+k$centers
+```
+
+    ##       abuse       rude       lang      force
+    ## 1 0.4495329 0.32141697 0.04601956 0.18303057
+    ## 2 0.6020816 0.09685358 0.01535157 0.28571323
+    ## 3 0.2491451 0.17291401 0.02955641 0.54838447
+    ## 4 0.8401839 0.07994415 0.00935996 0.07051199
+
+``` r
 fviz_cluster(k, data = df, geom = "point", main = "Clusters of Types of Police Officers")
 ```
 
-![](main_files/figure-markdown_github/unnamed-chunk-3-1.png) We can roughly see different types of officers. Cluster 4 seems to consist of officers who use a lot of force. Cluster 3 seems to consist of officers who commit abuse of authority but are not generally violent. And so on. Let's observe which cluster is most likely to have many allegations.
+![](main_files/figure-markdown_github/unnamed-chunk-3-1.png) We can roughly see different types of officers. Cluster 3 seems to consist of officers who use a lot of force. Cluster 4 seems to consist of officers who commit abuse of authority but are not generally violent. And so on. Let's observe which cluster is most likely to have many allegations.
 
 ``` r
 clusters <- k$cluster
@@ -104,9 +115,9 @@ cluster_totals
     ## # A tibble: 4 x 2
     ##   cluster `mean(total)`
     ##     <int>         <dbl>
-    ## 1       1          9.18
-    ## 2       2          9.68
-    ## 3       3         13.6 
-    ## 4       4         10.1
+    ## 1       1         10.0 
+    ## 2       2         13.4 
+    ## 3       3          9.24
+    ## 4       4          9.98
 
 That didn't result in something very meaningful, but I did it out of pure interest. I think there are many hidden patterns to explore in this dataset.
