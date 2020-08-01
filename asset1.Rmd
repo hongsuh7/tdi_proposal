@@ -1,6 +1,6 @@
 ---
 title: "TDI Project Proposal Excerpt 1"
-output: html_notebook
+output: rmarkdown::github_document
 ---
 
 ```{r}

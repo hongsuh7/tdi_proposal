@@ -1,6 +1,6 @@
 ---
 title: "TDI Project Proposal: NYPD Misconduct"
-output: html_notebook
+output: rmarkdown::github_document
 ---
 
 ## Introduction
