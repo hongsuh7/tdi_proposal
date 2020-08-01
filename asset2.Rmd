@@ -1,6 +1,8 @@
 ---
 title: "TDI Project Proposal Excerpt 2"
-output: rmarkdown::github_document
+output:
+  html_document:
+    df_print: paged
 ---
 ```{r, message = FALSE}
 library(tidyverse)

@@ -1,6 +1,8 @@
 ---
-title: "TDI Project Proposal: NYPD Misconduct"
-output: rmarkdown::github_document
+title: 'TDI Project Proposal: NYPD Misconduct'
+output:
+  html_document:
+    df_print: paged
 ---
 
 ## Introduction
