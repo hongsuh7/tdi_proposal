@@ -24,11 +24,11 @@ There are three main features I will certainly build, and others that I have yet
 Sneak peeks
 -----------
 
-## Geographic analysis
+### Geographic analysis
 
 Click this [link](https://hongsuh7.github.io/precinct.html) to see an interactive visualization of allegations against police by precinct. I learned while building this plot that the NYPD 75th precinct is [infamous](https://en.wikipedia.org/wiki/The_Seven_Five) for the police corruption that took place in it during the 1980s. 
 
-## Aggregate analysis of officers
+### Aggregate analysis of officers
 
 Are there distinct "types" of police officers that we can identify with our data? For example, there may be officers who have high rates of allegations of verbal abuse, but are surprisingly nonviolent; or there may be officers who have higher rates of use of force than other officers with similar numbers of allegations. A simple k-means clustering on officers based on number of allegations and proportions of types of allegations yields interesting results.
 
@@ -42,7 +42,7 @@ Are there distinct "types" of police officers that we can identify with our data
 ```
 We can roughly see different types of officers. Cluster 3 seems to consist of officers who use a lot of force. Cluster 4 seems to consist of officers who commit abuse of authority but are not generally violent. And so on. 
 
-## Individual analysis of officers
+### Individual analysis of officers
 
 Click this [link](https://hongsuh7.github.io/payroll.html) to see plots of compensation of an officer with 43 allegations from 2014-2019 versus that of a same-rank officer with no allegations. (Note that about 90% of NYPD officers have no allegations against them.) We all hear that police officers get away with misconduct, but it is another thing to see this plot and realize that allegations, even if substantiated, have absolutely no impact on officer compensation.
 
