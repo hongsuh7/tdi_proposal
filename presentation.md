@@ -32,7 +32,15 @@ Click this [link](https://hongsuh7.github.io/precinct.html) to see an interactiv
 
 Are there distinct "types" of police officers that we can identify with our data? For example, there may be officers who have high rates of allegations of verbal abuse, but are surprisingly nonviolent; or there may be officers who have higher rates of use of force than other officers with similar numbers of allegations. A simple k-means clustering on officers based on number of allegations and proportions of types of allegations yields interesting results.
 
-![](main_files/figure-markdown_github/unnamed-chunk-3-1.png) We can roughly see different types of officers. Cluster 3 seems to consist of officers who use a lot of force. Cluster 4 seems to consist of officers who commit abuse of authority but are not generally violent. And so on. 
+![](main_files/figure-markdown_github/unnamed-chunk-3-1.png) 
+```
+    ##       abuse       rude       lang      force
+    ## 1 0.4495329 0.32141697 0.04601956 0.18303057
+    ## 2 0.6020816 0.09685358 0.01535157 0.28571323
+    ## 3 0.2491451 0.17291401 0.02955641 0.54838447
+    ## 4 0.8401839 0.07994415 0.00935996 0.07051199
+```
+We can roughly see different types of officers. Cluster 3 seems to consist of officers who use a lot of force. Cluster 4 seems to consist of officers who commit abuse of authority but are not generally violent. And so on. 
 
 ## Individual analysis of officers
 
